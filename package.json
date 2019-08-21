@@ -1,0 +1,25 @@
+{
+  "name": "augmented-reality-pong",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node_modules/.bin/tsc && node_modules/.bin/webpack && node_modules/.bin/serve",
+    "build": "node_modules/.bin/tsc && node_modukes/.bin/webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "handtrackjs": "0.0.13",
+    "serve": "^11.1.0",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.39.2",
+    "worker-loader": "^2.0.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.7"
+  }
+}
