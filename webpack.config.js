@@ -12,14 +12,14 @@ module.exports = {
     //modules: ["node_modules"]
   },
   module: {
-    exclude: /node_modules/,
     rules: [
       // all files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
       {
         test: /\.tsx?$/,
         use: {
           loader: "ts-loader"
-        }
+        },
+        exclude: /node_modules/,
       }
     ]
   }

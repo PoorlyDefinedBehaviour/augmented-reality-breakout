@@ -1,24 +1,30 @@
 import "@babel/polyfill";
 
-//const tracker: Worker = new Worker("./worker");
-import TrackerWorker = require("worker-loader?name=dist/[name].js!./worker");
-
 import { Game } from "./Game/Index";
+
+import { HandTracker, IPrediction } from "./Handtracker";
 
 async function main(): Promise<void> {
   const game = new Game();
 
-  const tracker = new TrackerWorker();
+  const tracker = new HandTracker();
 
-  tracker.onmessage = ({ data: predictions }: MessageEvent) => {
-    /* if (predictions && predictions.length > 0) {
+  await tracker.start({
+    outputStride: 8,
+    imageScaleFactor: 0.7,
+    flipHorizontal: true,
+    maxNumBoxes: 1,
+    iouThreshold: 1,
+    scoreThreshold: 0.99
+  });
+
+  tracker.predict((predictions: Array<IPrediction>) => {
+    if (predictions && predictions.length > 0) {
       const { bbox } = predictions[0];
 
       game.move_player(bbox[0] + bbox[2] / 2);
-    } */
-
-    console.log("event", JSON.stringify(predictions, null, 2));
-  };
+    }
+  });
 
   game.draw();
 }

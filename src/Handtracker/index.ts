@@ -1,5 +1,3 @@
-const tracker: Worker = self as any;
-
 import * as HandTrack from "handtrackjs";
 
 export type IModelParams = {
@@ -23,24 +21,15 @@ export class HandTracker {
   private model: any;
   private video: any;
 
-  private model_params: IModelParams = {
-    outputStride: 8,
-    imageScaleFactor: 0.7,
-    flipHorizontal: true,
-    maxNumBoxes: 1,
-    iouThreshold: 1,
-    scoreThreshold: 0.99
-  };
-
-  public start = async (): Promise<void> => {
+  public start = async (model_params: IModelParams): Promise<void> => {
     this.video = document.getElementById("video");
 
-    this.model = await HandTrack.load(this.model_params);
+    this.model = await HandTrack.load(model_params);
 
     await HandTrack.startVideo(this.video);
   };
 
-  public predict = async (): Promise<void> => {
+  public predict = async (on_prediction: OnPredictionFn): Promise<void> => {
     const predictions = await this.model.detect(this.video);
 
     /* const canvas = document.getElementById("canvas");
@@ -52,11 +41,8 @@ export class HandTracker {
       this.video
     ); */
 
-    //on_prediction(predictions);
+    on_prediction(predictions);
 
-    tracker.postMessage(predictions);
-    requestAnimationFrame(this.predict);
+    requestAnimationFrame((): Promise<void> => this.predict(on_prediction));
   };
 }
-
-new HandTracker().start();
