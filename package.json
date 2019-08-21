@@ -4,12 +4,13 @@
   "description": "",
   "main": "dist/dist/main.js",
   "scripts": {
-    "start": "node_modules/.bin/tsc && node_modules/.bin/webpack && node_modules/.bin/serve",
+    "start": "node dist/dist/main.js",
+    "dev": "node_modules/.bin/tsc && node_modules/.bin/webpack && node_modules/.bin/serve",
     "build": "node_modules/.bin/tsc && node_modukes/.bin/webpack"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "engines": {
     "node": "10"
   },
