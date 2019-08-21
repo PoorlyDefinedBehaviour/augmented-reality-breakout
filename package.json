@@ -5,8 +5,8 @@
   "main": "dist/dist/main.js",
   "scripts": {
     "start": "node dist/dist/main.js",
-    "dev": "node_modules/.bin/tsc && node_modules/.bin/webpack && node_modules/.bin/serve",
-    "build": "node_modules/.bin/tsc && node_modukes/.bin/webpack"
+    "dev-run": "node_modules/.bin/tsc && node_modules/.bin/webpack && node_modules/.bin/serve",
+    "dev-build": "node_modules/.bin/tsc && node_modukes/.bin/webpack"
   },
   "keywords": [],
   "author": "",
