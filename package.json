@@ -10,6 +10,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "10"
+  },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "handtrackjs": "0.0.13",
