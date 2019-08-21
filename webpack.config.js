@@ -2,7 +2,7 @@
 const webpack = require("webpack");
 
 module.exports = {
-  entry: "./build/main.js",
+  entry: "./src/main.ts",
   output: {
     filename: "dist/main.js"
   },
@@ -12,6 +12,7 @@ module.exports = {
     //modules: ["node_modules"]
   },
   module: {
+    exclude: /node_modules/,
     rules: [
       // all files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
       {
