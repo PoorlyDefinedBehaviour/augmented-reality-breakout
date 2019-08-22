@@ -100,13 +100,13 @@ export class Game {
       }
 
       if (this.is_colliding(target, this.ball)) {
-        this.randomly_chance_ball_direction();
+        this.randomly_change_ball_direction();
         target.active = false;
       }
     }
   };
 
-  private randomly_chance_ball_direction = (): void => {
+  private randomly_change_ball_direction = (): void => {
     Math.random() < 0.5 ? (this.ball.x_speed *= -1) : (this.ball.y_speed *= -1);
   };
 
