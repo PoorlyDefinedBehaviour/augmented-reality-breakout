@@ -12,7 +12,7 @@ async function main(): Promise<void> {
   await tracker.start({
     outputStride: 8,
     imageScaleFactor: 0.7,
-    flipHorizontal: true,
+    flipHorizontal: false,
     maxNumBoxes: 1,
     iouThreshold: 1,
     scoreThreshold: 0.99
