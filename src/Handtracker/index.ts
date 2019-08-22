@@ -1,6 +1,6 @@
 import * as HandTrack from "handtrackjs";
 
-export type IModelParams = {
+export type ModelParams = {
   outputStride: number;
   imageScaleFactor: number;
   flipHorizontal: boolean; // flip e.g for video
@@ -9,19 +9,19 @@ export type IModelParams = {
   scoreThreshold: number; // confidence threshold for predictions.
 };
 
-export interface IPrediction {
+export interface Prediction {
   bbox: Array<number>;
   class: string | number;
   score: number;
 }
 
-export type OnPredictionFn = (predictions: Array<IPrediction>) => void;
+export type OnPredictionFn = (predictions: Array<Prediction>) => void;
 
 export class HandTracker {
   private model: any;
   private video: any;
 
-  public start = async (model_params: IModelParams): Promise<void> => {
+  public start = async (model_params: ModelParams): Promise<void> => {
     this.video = document.getElementById("video");
 
     this.model = await HandTrack.load(model_params);
@@ -31,15 +31,6 @@ export class HandTracker {
 
   public predict = async (on_prediction: OnPredictionFn): Promise<void> => {
     const predictions = await this.model.detect(this.video);
-
-    /* const canvas = document.getElementById("canvas");
-
-    this.model.renderPredictions(
-      predictions,
-      canvas,
-      (canvas as any).getContext("2d"),
-      this.video
-    ); */
 
     on_prediction(predictions);
 
