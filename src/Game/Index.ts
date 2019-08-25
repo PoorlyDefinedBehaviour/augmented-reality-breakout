@@ -8,7 +8,9 @@ interface Entity {
 }
 
 export class Game {
-  private canvas: HTMLCanvasElement = document.getElementById("canvas") as any;
+  private canvas: HTMLCanvasElement = document.getElementById(
+    "game-canvas"
+  ) as any;
   private canvas_context: any = this.canvas.getContext("2d");
 
   private player: Entity = {

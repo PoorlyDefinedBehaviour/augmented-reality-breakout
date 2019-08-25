@@ -11,11 +11,11 @@ async function main(): Promise<void> {
 
   await tracker.start({
     outputStride: 8,
-    imageScaleFactor: 0.7,
+    imageScaleFactor: 0.5,
     flipHorizontal: true,
     maxNumBoxes: 1,
     iouThreshold: 1,
-    scoreThreshold: 0.99
+    scoreThreshold: 0.7
   });
 
   tracker.predict((predictions: Array<Prediction>) => {
