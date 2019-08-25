@@ -2,6 +2,8 @@
 
 Atari's breakout with a touch of augmented reality
 
+![Preview](https://i.imgur.com/rgZhitb.png)
+
 # How to play
 
 [Click here to play](https://breakout-augmented-reality.herokuapp.com) (Tested on windows)
